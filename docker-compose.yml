@@ -2,7 +2,8 @@ version: "2"
 services:
     ytdl_material:
         environment: 
-            ytdl_mongodb_connection_string: 'mongodb://ytdl-mongo-db:27017'
+            #ytdl_mongodb_connection_string: 'mongodb://ytdl-mongo-db:27017'
+            ytdl_mongodb_connection_string: 'mongodb://ytdl-mongo-db:27017/?compressors=zlib'
             ytdl_use_local_db: 'false'
             write_ytdl_config: 'true'
         restart: always
@@ -16,7 +17,8 @@ services:
             - ./users:/app/users
         ports:
             - "8998:17442"
-        image: tzahi12345/youtubedl-material:latest
+        #image: tzahi12345/youtubedl-material:latest
+        image: tzahi12345/youtubedl-material:sha-208cd83
     ytdl-mongo-db:
         # If you are using a Raspberry Pi, use mongo:4.4.18
         image: mongo:4
@@ -26,3 +28,6 @@ services:
         restart: always
         volumes:
             - ./db/:/data/db
+#        entrypoint: sleep infinity
+#        entrypoint: mongod --repair
+
