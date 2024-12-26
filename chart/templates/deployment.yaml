@@ -72,6 +72,8 @@ spec:
               subPath: {{ .Values.persistence.users.subPath }}
               {{- end }}
           env:
+            - name: UID
+              value: 568
           {{- if .Values.extraEnvs }}
 {{ toYaml ( .Values.extraEnvs ) | indent 12 }}
           {{- end }}
