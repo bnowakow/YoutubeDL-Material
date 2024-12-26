@@ -72,10 +72,9 @@ spec:
               subPath: {{ .Values.persistence.users.subPath }}
               {{- end }}
           env:
-            {{- range .Values.env.extraEnvs }}
-              - name: {{ .name | quote }}
-                value: {{ .value | quote }}
-            {{- end }}
+          {{- if .Values.extraEnvs }}
+{{ toYaml ( .Values.extraEnvs ) | indent 12 }}
+          {{- end }}
       volumes:
         - name: appdata
           {{- if .Values.persistence.appdata.enabled}}
