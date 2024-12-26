@@ -13,8 +13,8 @@ RUN sh ./fetch-twitchdownloader.sh
 FROM ubuntu:22.04 AS base
 ARG TARGETPLATFORM
 ARG DEBIAN_FRONTEND=noninteractive
-ENV UID=1000
-ENV GID=1000
+ENV UID=568
+ENV GID=568
 ENV USER=youtube
 ENV NO_UPDATE_NOTIFIER=true
 ENV PM2_HOME=/app/pm2
